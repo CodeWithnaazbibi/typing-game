@@ -1,61 +1,60 @@
+
 const topSection = document.querySelector('.top-section');
+const keyboard = document.querySelector('.keyboard');
+const toggleBtn = document.getElementById('toggle-keyboard-btn');
 
-const keyboardSection = document.querySelector('.keyboard');
 
-const toggleButton = document.getElementById('toggle-keyboard-btn');
-
-const keyboardKeys = document.querySelectorAll('.key, .keyspace');
-
+const allKeys = document.querySelectorAll('.key, .keyspace');
 
 
 
-function getOnScreenKey(event) {
-
-    const targetKey = event.code === 'Space' ? 'SPACE' : event.key.toUpperCase();
-
-    return Array.from(keyboardKeys).find(button => button.textContent.trim() === targetKey);
-
-}
+window.addEventListener('keydown', function(event) {
+    let pressedKey = event.key.toUpperCase();
 
 
 
-
-window.addEventListener('keydown', (event) => {
-
-    const matchedKey = getOnScreenKey(event);
-
-    if (matchedKey) {
-
-        matchedKey.classList.add('active');
-
+    if (event.code === 'Space') {
+        pressedKey = 'SPACE';
     }
 
+
+    allKeys.forEach(function(keyButton) {
+        if (keyButton.innerText.trim() === pressedKey) {
+            keyButton.classList.add('active');
+        }
+    });
+});
+
+
+
+window.addEventListener('keyup', function(event) {
+    let releasedKey = event.key.toUpperCase();
+
+    if (event.code === 'Space') {
+        releasedKey = 'SPACE';
+    }
+
+    allKeys.forEach(function(keyButton) {
+        if (keyButton.innerText.trim() === releasedKey) {
+            keyButton.classList.remove('active');
+        }
+    });
 });
 
 
 
 
-window.addEventListener('keyup', (event) => {
+toggleBtn.addEventListener('click', function() {
+    // Toggle hidden state on keyboard
+    keyboard.classList.toggle('hidden');
+    
 
-    const matchedKey = getOnScreenKey(event);
+    topSection.classList.toggle('full-height');
 
-    if (matchedKey) {
-
-        matchedKey.classList.remove('active');
-
+  
+    if (keyboard.classList.contains('hidden')) {
+        toggleBtn.innerText = 'Show Keyboard';
+    } else {
+        toggleBtn.innerText = 'Hide Keyboard';
     }
-
-});
-
-
-
-
-toggleButton.addEventListener('click', () => {
-
-    const isHidden = keyboardSection.classList.toggle('hidden');
-
-    topSection.classList.toggle('full-height', isHidden);
-
-    toggleButton.textContent = isHidden ? 'Show Keyboard' : 'Hide Keyboard';
-
 });
