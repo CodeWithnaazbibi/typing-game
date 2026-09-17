@@ -1,0 +1,67 @@
+
+.top-section{
+    height: 50vh;
+}
+
+
+.keyboard{
+    height: 50vh;
+}
+
+.keyboard{
+    background-color: rgb(0, 0, 0);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.keyboard-row{
+
+    display: flex;
+    gap: 8px;
+
+    }
+
+.key{
+
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 8px;
+     background: rgb(3, 217, 255);
+     color: black;
+     font-size: 18px;
+     font-weight: bold;
+
+}
+.key:hover{
+
+    background: #444;
+
+}
+
+.key:active{
+    transform: translateY(4px);
+
+}
+.keyspace{
+     
+    width: 350px;
+    height: 55px;
+    border: none;
+    border-radius: 8px;
+    background: rgb(3, 217, 255);
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.keyspace:hover{
+    background: #444;
+}
