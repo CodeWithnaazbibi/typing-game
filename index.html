@@ -3,59 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>typing game</title>
+    <title>Typing Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="top-section">
+    <div id="game-container">
+        <div id="hud">
+            <div>Score: <span id="score-text">0</span></div>
+            <div>Combo: x<span id="combo-text">0</span></div>
+            <div>Wave: <span id="wave-text">1</span></div>
+            <div>Lives: <span id="lives-text">❤️❤️❤️</span></div>
+        </div>
 
-        
-       <button id="toggle-keyboard-btn">Hide Keyboard</button> 
+        <div id="typing-area">Type here: <span id="current-input"></span></div>
+
+        <div id="start-screen">
+            <h1>Typing Battle</h1>
+            <p>Type the words before they reach the bottom!</p>
+            <button onclick="startGame()">Start Game</button>
+        </div>
+
+        <div id="game-over-screen">
+            <h1 style="color: red;">GAME OVER</h1>
+            <h2>Final Score: <span id="final-score">0</span></h2>
+            <button onclick="resetGame()">Play Again</button>
+        </div>
     </div>
 
-    <div class="keyboard">
 
-        <div class="keyboard-row">
-                <button class="key">Q</button>
-                <button class="key">W</button>
-                <button class="key">E</button>
-                <button class="key">R</button>
-                <button class="key">T</button>
-                <button class="key">Y</button>
-                <button class="key">U</button>
-                <button class="key">I</button>
-                <button class="key">O</button>
-                <button class="key">P</button>
-        </div>
-
-        <div class="keyboard-row">
-            <button class="key">A</button>
-            <button class="key">S</button>
-            <button class="key">D</button>
-            <button class="key">F</button>
-            <button class="key">G</button>
-            <button class="key">H</button>
-            <button class="key">J</button>
-            <button class="key">K</button>
-            <button class="key">L</button>
-        </div>
-
-        <div class="keyboard-row">
-            <button class="key">Z</button>
-            <button class="key">X</button>
-            <button class="key">C</button>
-            <button class="key">V</button>
-            <button class="key">B</button>
-            <button class="key">N</button>
-            <button class="key">M</button>
-        </div>
-
-        <div class="keyboard-row">
-            <button class="keyspace">SPACE</button>
-        </div>
-
-    </div>
-
-   <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
