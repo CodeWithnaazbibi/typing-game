@@ -68,7 +68,24 @@ document.getElementById('game').addEventListener('keyup', ev => {
   }
 
   console.log({key,expected});
-  
+
+  if (!window.timer && isLetter) {
+    window.timer = setInterval(() => {
+      if (!window.gameStart) {
+        window.gameStart = (new Date()).getTime();
+      }
+      const currentTime = (new Date()).getTime();
+      const msPassed = currentTime - window.gameStart;
+      const sPassed = Math.round(msPassed / 1000);
+      const sLeft = Math.round((gameTime / 1000) - sPassed);
+      if (sLeft <= 0) {
+        gameOver();
+        return;
+      }
+      document.getElementById('info').innerHTML = sLeft + '';
+    }, 1000);
+  }
+
 });
 
 document.getElementById('newGameBtn').addEventListener('click', () => {
