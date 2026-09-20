@@ -136,6 +136,18 @@ document.getElementById('game').addEventListener('keyup', ev => {
       removeClass(currentWord.lastChild, 'incorrect');
       removeClass(currentWord.lastChild, 'correct');
     }
+
+  if (currentWord.getBoundingClientRect().top > 250) {
+    const words = document.getElementById('words');
+    const margin = parseInt(words.style.marginTop || '0px');
+    words.style.marginTop = (margin - 35) + 'px';
+  }
+
+  const nextLetter = document.querySelector('.letter.current');
+  const nextWord = document.querySelector('.word.current');
+  const cursor = document.getElementById('cursor');
+  cursor.style.top = (nextLetter || nextWord).getBoundingClientRect().top + 2 + 'px';
+  cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px';
   }
 
 });
