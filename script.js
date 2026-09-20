@@ -86,6 +86,21 @@ document.getElementById('game').addEventListener('keyup', ev => {
     }, 1000);
   }
 
+  if (isLetter) {
+    if (currentLetter) {
+      addClass(currentLetter, key === expected ? 'correct' : 'incorrect');
+      removeClass(currentLetter, 'current');
+      if (currentLetter.nextSibling) {
+        addClass(currentLetter.nextSibling, 'current');
+      }
+    } else {
+      const incorrectLetter = document.createElement('span');
+      incorrectLetter.innerHTML = key;
+      incorrectLetter.className = 'letter incorrect extra';
+      currentWord.appendChild(incorrectLetter);
+    }
+  }
+
 });
 
 document.getElementById('newGameBtn').addEventListener('click', () => {
