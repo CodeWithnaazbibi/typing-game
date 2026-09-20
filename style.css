@@ -3,6 +3,8 @@ body {
             background-color: #333333;
             color: white;
             text-align: center;
+            margin:0;
+            padding:0;
         }
 
         #game-container {
@@ -14,7 +16,8 @@ body {
             background-position: center;
             background-color: transparent; 
             
-            margin: 20px auto;
+
+            margin-left: 30%;
             position: relative;
             overflow: hidden;
             border: 5px solid #ffffff;
