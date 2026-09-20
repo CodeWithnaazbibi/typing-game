@@ -45,3 +45,17 @@ function getWpm() {
   });
   return correctWords.length / gameTime * 60000;
 }
+
+function gameOver() {
+  clearInterval(window.timer);
+  addClass(document.getElementById('game'), 'over');
+  const result = getWpm();
+  document.getElementById('info').innerHTML = `WPM: ${result}`;
+}
+
+document.getElementById('newGameBtn').addEventListener('click', () => {
+  gameOver();
+  newGame();
+});
+
+newGame();
