@@ -1,4 +1,4 @@
- let wordList = ["html", "css", "code", "game", "apple", "water", "hello", "world", "keyboard", "mouse", "screen", "pixel", "beginner", "script", "style"];
+let wordList = ["html", "css", "code", "game", "apple", "water", "hello", "world", "keyboard", "mouse", "screen", "pixel", "beginner", "script", "style"];
         
         let playerLives = 3;
         let startingEnemySpeed = 1;
@@ -195,4 +195,3 @@
             document.getElementById("final-score").innerText = score;
             document.getElementById("game-over-screen").style.display = "flex";
         }
-
