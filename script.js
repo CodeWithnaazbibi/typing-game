@@ -20,3 +20,14 @@ function randomWord() {
 function formatWord(word) {
   return `<div class="word"><span class="letter">${word.split('').join('</span><span class="letter">')}</span></div>`;
 }
+
+function newGame() {
+  document.getElementById('words').innerHTML = '';
+  for (let i = 0; i < 200; i++) {
+    document.getElementById('words').innerHTML += formatWord(randomWord());
+  }
+  addClass(document.querySelector('.word'), 'current');
+  addClass(document.querySelector('.letter'), 'current');
+  document.getElementById('info').innerHTML = (gameTime / 1000) + '';
+  window.timer = null;
+}
