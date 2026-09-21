@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Game</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style3.css">
 </head>
 <body>
-        <div class="top-section">
-        <main>
-            <div id="header">
-                <div id="info"></div>
-                <div id="buttons">
-                    <button id="newGameBtn">New game</button>
-                </div>
-            </div>
-            <div id="game" tabindex="0">
-                <div id="words"></div>
-                <div id="cursor"></div>
-                <div id="focus-error">Click here to focus</div>
-            </div>
-        </main>
-    </div>
+    <!-- <div id="game-container">
+        <div id="hud">
+            <div>Score: <span id="score-text">0</span></div>
+            <div>Combo: x<span id="combo-text">0</span></div>
+            <div>Wave: <span id="wave-text">1</span></div>
+            <div>Lives: <span id="lives-text">❤️❤️❤️</span></div>
+        </div>
 
+        <div id="typing-area">Type here: <span id="current-input"></span></div>
+
+        <div id="start-screen">
+            <h1>Typing Battle</h1>
+            <p>Type the words before they reach the bottom!</p>
+            <button onclick="startGame()">Start Game</button>
+        </div>
+
+        <div id="game-over-screen">
+            <h1 style="color: red;">GAME OVER</h1>
+            <h2>Final Score: <span id="final-score">0</span></h2>
+            <button onclick="resetGame()">Play Again</button>
+        </div>
+    </div> -->
 
     <div class="keyboard">
 
@@ -64,7 +70,7 @@
         <div class="keyboard-row">
             <button class="keyspace">SPACE</button>
         </div>
-        <a href="./game3.html">
+        <a href="./index.html">
             <button id="change-game-button">Change Game</button>
         </a>
 
@@ -72,7 +78,7 @@
 
 
 
-    <!-- <script src="app.js"></script> -->
-    <script src="script.js"></script>
+
+    <script src="game3.js"></script>
 </body>
 </html>
