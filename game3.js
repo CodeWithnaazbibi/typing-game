@@ -78,3 +78,146 @@ window.addEventListener("load", () => {
   }
   requestAnimationFrame(animate);
 });
+
+class World {
+  constructor() {
+    this.level1 = {
+      coinsLayer: [
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+
+        0,0,0,0,0,0,"R","K",0,0,0,0,0,0,0,
+
+        0,0,"F",0,"Q","M","T","H","Z","L","B","C","N","V",0,
+
+        0,"J","P",0,0,"G","Y",0,"D","R","K","W","A","S",0,
+
+        0,"C","X","H","M","Q","E",0,"T",0,0,"L","B","Z",0,
+
+        0,"N","V",0,"K","P",0,"J","R","F","U","Y","D","M",0,
+
+        0,"A","T",0,0,0,0,0,0,0,0,"Q","L","X",0,
+
+        0,"W","H",0,0,0,0,0,0,0,0,"Z",0,"C",0,
+
+        0,"F","R",0,0,0,0,0,0,0,0,"M",0,0,0,
+
+        0,"Q","Y",0,0,0,0,0,0,0,0,"B","K","H",0,
+
+        0,"L","D",0,0,0,0,0,0,0,0,"V","N","J",0,
+
+        0,"S","M",0,0,0,0,0,0,0,0,"X","F","Q",0,
+
+        0,"H","K","Z","R","T","Y","P","C","N","M","L","B","D",0,
+
+        0,"Q","W","E","R","T","Y","U","I","O","P","A","S","D",0,
+
+        0,"J","F",0,"K","L","Z","X","C","V","B","N","M","Q",0,
+
+        0,"R","T",0,0,"Y","U",0,"I","O","P","L","K","J",0,
+
+        0,"A","S","D","F","G","H","J","K","L","Q","W","E","R",0,
+
+        0,"Z","X","C","V","B","N","M","A","S","D","F","G","H",0,
+
+        0,0,0,0,"Q",0,0,0,0,"W",0,0,"E","R",0,
+
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+      ],
+      collisionLayer: [
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,1,1,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,1,0,1,1,0,0,0,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,1,1,1,1,1,1,1,1,0,0,0,1,
+        1,0,0,1,1,1,1,1,1,1,1,0,0,0,1,
+        1,0,0,1,1,1,1,1,1,1,1,0,1,1,1,
+        1,0,0,1,1,1,1,1,1,1,1,0,0,0,1,
+        1,0,0,1,1,1,1,1,1,1,1,0,0,0,1,
+        1,0,0,1,1,1,1,1,1,1,1,0,0,0,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+      ],
+      backgroundLayer: document.getElementById("backgroundLevel1"),
+      foregroundLayer: document.getElementById("foregroundLevel1"),
+    };
+  }
+  getTile(array, row, col){
+    return array[COLS * row + col]
+  }
+  drawBackground(ctx) {
+    ctx.drawImage(this.level1.backgroundLayer, 0, 0);
+  }
+
+  drawForeground(ctx) {
+    ctx.drawImage(this.level1.foregroundLayer, 0, 0);
+  }
+
+  findLetter(letter) {
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+
+      if (this.level1.coinsLayer[row * COLS + col] === letter) {
+        return {
+          row: row,
+          col: col
+        };
+      }
+
+    }
+  }
+
+  return null;
+}
+
+
+  drawCoins(ctx) {
+  ctx.font = "bold 18px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+      const idx = row * COLS + col;
+      const letter = this.level1.coinsLayer[idx];
+
+      if (letter) {
+        const x = col * TILE_SIZE + TILE_SIZE / 2;
+        const y = row * TILE_SIZE + TILE_SIZE / 2;
+
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(letter, x, y);
+      }
+    }
+  }
+}
+  
+  drawCollisionMap(ctx){
+    ctx.fillStyle = "rgba(0,0,225,0.5)";
+    for (let row = 0; row < ROWS; row++) {
+      for (let col = 0; col < COLS; col++) {
+        if(this.getTile(this.level1.collisionLayer, row, col)){
+          ctx. fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        }
+      }
+    }
+  }
+
+  
+
+  drawGrid(ctx) {
+    ctx.strokeStyle = "black";
+    for (let row = 0; row < ROWS; row++) {
+      for (let col = 0; col < COLS; col++) {
+        ctx.strokeRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+      }
+    }
+  }
+} 
