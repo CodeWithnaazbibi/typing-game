@@ -6,6 +6,19 @@ body {
             margin:0;
             padding:0;
         }
+        #canvas1 {
+            border: 2px solid black;
+            position: absolute;
+            top: 55%;
+            left: 60%;
+            translate: -50% -50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            transform-origin: center center;
+            z-index: 999;
+        }
+        .assets{
+            display: none;
+        }
 
         #game-container {
             width: 800px;
@@ -109,7 +122,7 @@ body {
             z-index: 10;
         }
 
-        .top-section {
+.top-section {
     height: 50vh;
     display: flex;
     justify-content: flex-end;
