@@ -354,3 +354,44 @@ class Hero extends GameObject {
     }
   }
 }
+
+class Input {
+  constructor(game) {
+    this.game = game;
+    this.keys = [];
+
+    window.addEventListener("keydown", (e) => {
+      let letter = e.key.toUpperCase();
+
+      let place = this.game.world.findLetter(letter);
+
+      if (place) {
+        this.game.hero.destinationPosition.x = place.col * TILE_SIZE;
+        this.game.hero.destinationPosition.y = place.row * TILE_SIZE;
+      }
+    });
+    window.addEventListener("keyup", (e) => {
+      let letter = e.key.toUpperCase();
+
+      let place = this.game.world.findLetter(letter);
+
+      if (place) {
+        this.game.hero.destinationPosition.x = place.col * TILE_SIZE;
+        this.game.hero.destinationPosition.y = place.row * TILE_SIZE;
+      }
+    });
+  }
+
+  keyPressed(key) {
+    if (this.keys.indexOf(key) === -1) {
+      this.keys.unshift(key);
+    }
+  }
+  keyReleased(key) {
+    const index = this.keys.indexOf(key);
+    this.keys.splice(index, 1);
+  }
+  get lastKey() {
+    return this.keys[0];
+  }
+}
